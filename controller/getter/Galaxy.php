@@ -14,9 +14,8 @@ class Galaxy {
   }
 
   private function parse_raw_data($raw_data) {
-    echo "<pre>";
-    print_r($raw_data);
-    echo "</pre>";
+    $galaxy = new \SCFR\StarMatrix\Item\Galaxy($raw_data);
+    print_r($galaxy->get_systems());
   }
 }
 ?>

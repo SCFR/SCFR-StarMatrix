@@ -1,4 +1,4 @@
-<?php namespace SCFR\db;
+<?php namespace SCFR\StarMatrix\db;
 class Wpdb implements Db {
   protected $wpdb;
   protected static $_instance;
@@ -20,8 +20,7 @@ class Wpdb implements Db {
   }
 
   public function create_tables() {
-    $charset_collate = $wpdb->get_charset_collate();
-
+    $charset_collate = $this->wpdb->get_charset_collate();
     $sqls = array(
       "CREATE TABLE IF NOT EXISTS ".$this->settings["galaxy_table"]."(
       id mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -44,10 +43,11 @@ class Wpdb implements Db {
       UNIQUE KEY id (id)
       ) $charset_collate;"
     );
-    $wpdb->show_errors();
+    $this->wpdb->show_errors();
     foreach($sqls as $sql) {
-      if($wpdb->query($sql) === false) die($wpdb->print_error());
+      if($this->wpdb->query($sql) === false) die($this->wpdb->print_error());
     }
+
   }
 
 }

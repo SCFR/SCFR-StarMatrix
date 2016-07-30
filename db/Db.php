@@ -1,10 +1,6 @@
-<?php namespace SCFR\db;
+<?php namespace SCFR\StarMatrix\db;
 interface Db {
-  protected static $_instance;
-  
-  private function __construct();
-
-  public function create_tables();
-  public static function get_db();
+  function create_tables();
+  static function get_db();
 }
 ?>
